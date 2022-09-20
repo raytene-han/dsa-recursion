@@ -1,19 +1,41 @@
 /** product: calculate the product of an array of numbers. */
-
+/*
+1. base case - array is empty, return 1
+2. pop the last num in array
+3. return that multiplied by product(nums)
+*/
 function product(nums) {
+  if (nums.length === 0) return 1;
 
+  return nums.pop() * product(nums);
 }
 
 /** longest: return the length of the longest word in an array of words. */
-
+/*
+1. base case - array length = 1, return length of item in array
+2. call itself -
+3. progress - moving onto the next word in the array
+*/
 function longest(words) {
 
+  if (words.length === 0) return 0;
+
+  let currWord = words.pop();
+  let nextWord = longest(words);
+
+  if (currWord.length > nextWord) {
+    return currWord.length;
+  } else {
+    return nextWord;
+  }
 }
 
 /** everyOther: return a string with every other letter. */
 
 function everyOther(str) {
+  if (str.length === 0) return "";
 
+  return str.slice(0, 1) + everyOther(str.slice(2))
 }
 
 /** find: return boolean depending on if val exists in array or not. */
